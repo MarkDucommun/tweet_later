@@ -14,26 +14,20 @@ $(document).ready(function() {
     
     $.post('/', data, function(response) {
       
-      keepGoing = true
-      
-      while(keepGoing){
-        setInterval(function(){
-
+        setTimeout(function(){
           $.get('/status/' + response, function(response){
-             console.log(response)
-             keepGoing = response
-          })
-
-        }, 100)
-      }
-      if (response){
-        $('#processing').hide();
-        $('.messages').append('<p class="success">You have successfully tweeted</p>');}
+           
+          if (response == "stuff"){
+            $('#processing').hide();
+            $('.messages').append('<p class="success">You have successfully tweeted</p>');}
     
-      else {
-        $('.messages').append('<p class="success">Error</p>');}
+          else {
+            $('.messages').append('<p class="success">Error</p>');}
 
-      $('textarea').prop('disabled', false);
+          $('textarea').prop('disabled', false);
+
+          })
+        }, 1000)
     });
   });
 });

@@ -24,10 +24,11 @@ get '/auth' do
 end
 
 get '/status/:job_id' do
+  sleep(10)
   if job_is_complete(params[:job_id])
-    return false
+    return 'stuff'
   else
-    return true
+    return 'not stuff'
   end
 end
 
